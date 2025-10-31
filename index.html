@@ -1,10 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-    <title>My GitHub Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHYSICAL COMPETING!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>Welcome to my GitHub Pages site.</p>
+    <div class="sunburst"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"> PHYSICAL COMPETING</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">หน้าแรก</a></li>
+                <li><a href="gameplay.html" class="nav-link">วิธีการเล่น</a></li>
+                <li><a href="characters.html" class="nav-link">ตัวละคร</a></li>
+                <li><a href="branches.html" class="nav-link">สาขา</a></li>
+                <li><a href="about.html" class="nav-link">เกี่ยวกับโปรเจค</a></li>
+                <li><a href="poster.html" class="nav-link">โปสเตอร์</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>PHYSICAL COMPETING</h1>
+        <p class="subtitle">คณะไอที KMITL. - ศึกชิงสาขา!</p>
+        <p class="tagline">🤜 ไม่ใช้ GPA แต่ใช้หมัด! 🤛</p>
+    </header>
+    
+    <div class="container">
+        <!-- EASY EDIT SECTION: Main Introduction -->
+        <div class="intro-section">
+            <h2>🥋 ตำนานเริ่มต้นที่นี่ 🥋</h2>
+            <p>
+                <!-- EDIT HERE: Main concept description -->
+                ลืม GPA ไปได้เลย! ที่คณะไอที Kmitl. มีเพียงนักรบที่แข็งแกร่งที่สุดเท่านั้นที่จะได้เลือกสาขา!
+            </p>
+            <p>
+                <!-- EDIT HERE: Story hook -->
+                สามสาขาตำนานรออยู่ สามเส้นทางสู่ความรุ่งโรจน์ แต่มีเพียงวิธีเดียวที่จะเลือก...
+            </p>
+            <p style="color: #ff4e50; font-size: 1rem;">
+                ⚡ สู้เพื่อมัน! ⚡
+            </p>
+        </div>
+        
+        <!-- Game Preview Image Section -->
+        <div class="game-preview">
+            <h2>📸 ภาพจากเกม</h2>
+            <div class="preview-grid">
+                <!-- EASY EDIT: Replace placeholder images with actual screenshots -->
+                <div class="preview-item">
+                    <img src="images/screenshot1.jpg" alt="Game Screenshot 1" class="preview-img">
+                    <p>หน้าจอเกม</p>
+                </div>
+                <div class="preview-item">
+                    <img src="images/screenshot2.jpg" alt="Game Screenshot 2" class="preview-img">
+                    <p>การต่อสู้</p>
+                </div>
+                <div class="preview-item">
+                    <img src="images/screenshot3.jpg" alt="Game Screenshot 3" class="preview-img">
+                    <p>การเลือกสาขา</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="vs-text">เลือกชะตากรรมของคุณ!</div>
+        
+        <!-- EASY EDIT SECTION: Three Branches -->
+        <div class="branches-container">
+            <!-- Branch 1: Software Engineering -->
+            <div class="branch-card">
+                <div class="branch-icon">💻</div>
+                <h3>วิศวกรรมซอฟต์แวร์</h3>
+                <!-- EDIT HERE: Branch description -->
+                <p>
+                    เรียนรู้ศิลปะการเขียนโค้ด! สร้างอาณาจักรด้วยอัลกอริทึมและเฟรมเวิร์ก
+                    กำจัดบั๊กด้วยทักษะการดีบั๊กอันทรงพลัง!
+                </p>
+                <button class="fight-btn" onclick="location.href='branches.html#software'">ดูรายละเอียด</button>
+            </div>
+            
+            <!-- Branch 2: Network Engineering -->
+            <div class="branch-card">
+                <div class="branch-icon">🌐</div>
+                <h3>วิศวกรรมเครือข่าย</h3>
+                <!-- EDIT HERE: Branch description -->
+                <p>
+                    ควบคุมโลกดิจิทัล! บังคับการไหลของข้อมูลผ่านเครือข่ายอันกว้างใหญ่
+                    กังฟูของคุณถูกส่งด้วยความเร็วแสง!
+                </p>
+                <button class="fight-btn" onclick="location.href='branches.html#network'">ดูรายละเอียด</button>
+            </div>
+            
+            <!-- Branch 3: Digital Media -->
+            <div class="branch-card">
+                <div class="branch-icon">🎮</div>
+                <h3>ดิจิทัลมีเดีย</h3>
+                <!-- EDIT HERE: Branch description -->
+                <p>
+                    ควบคุมพลังแห่งความคิดสร้างสรรค์! ผสมผสานศิลปะกับเทคโนโลยี
+                    จินตนาการของคุณคืออาวุธที่ทรงพลังที่สุด!
+                </p>
+                <button class="fight-btn" onclick="location.href='branches.html#digital'">ดูรายละเอียด</button>
+            </div>
+        </div>
+        
+        <!-- EASY EDIT SECTION: Game Rules -->
+        <div class="game-rules">
+            <h2>🎯 กฎการแข่งขัน 🎯</h2>
+            <ul>
+                <!-- EDIT HERE: Add or remove rules as needed -->
+                <li>นักศึกษาแต่ละคนเข้าสู่สนามในฐานะนักสู้</li>
+                <li>ต่อสู้กับนักศึกษาคนอื่นๆ เพื่อพิสูจน์คุณค่าของตัวเอง</li>
+                <li>ชนะการแข่งขันเพื่อรับคะแนนและชื่อเสียง</li>
+                <li>นักสู้ที่แข็งแกร่งที่สุดได้เลือกสาขาที่ต้องการก่อน</li>
+                <li>ฝึกฝนหนัก ต่อสู้หนักกว่า เขียนโค้ดหนักที่สุด!</li>
+                <li>จำไว้: ในโดโจนี้ คีย์บอร์ดของคุณคืออาวุธ!</li>
+            </ul>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>พร้อมที่จะสู้แล้วหรือยัง?</h2>
+            <button class="start-btn" onclick="location.href='gameplay.html'">เริ่มการเดินทาง!</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Physical Competing - คณะไอที มจธ.</p>
+        <p style="margin-top: 10px;">🥋 ขอให้โค้ดเดอร์ที่แข็งแกร่งที่สุดชนะ! 🥋</p>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

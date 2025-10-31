@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปสเตอร์ - Physical Competing</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for poster page */
+        .poster-container {
+            max-width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .poster-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .poster-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+        }
+        
+        .poster-placeholder {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 60px 20px;
+            text-align: center;
+            min-height: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .poster-placeholder h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .poster-placeholder p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .poster-placeholder .upload-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            opacity: 0.5;
+        }
+        
+        .poster-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: var(--accent-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border: 1px solid var(--text-gray);
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background: var(--primary-color);
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Fullscreen view styles */
+        .fullscreen-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            padding: 15px 20px;
+            border-radius: 50%;
+            border: 1px solid var(--text-gray);
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .fullscreen-toggle:hover {
+            background: var(--primary-color);
+            color: #000;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .poster-container {
+                padding: 10px;
+            }
+            
+            .poster-wrapper {
+                padding: 10px;
+            }
+            
+            .poster-placeholder {
+                min-height: 400px;
+                padding: 40px 15px;
+            }
+            
+            .poster-placeholder h2 {
+                font-size: 1.5rem;
+            }
+            
+            .poster-placeholder p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sunburst"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🥋 PHYSICAL COMPETING</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">หน้าแรก</a></li>
+                <li><a href="gameplay.html" class="nav-link">วิธีการเล่น</a></li>
+                <li><a href="characters.html" class="nav-link">ตัวละคร</a></li>
+                <li><a href="branches.html" class="nav-link">สาขา</a></li>
+                <li><a href="about.html" class="nav-link">เกี่ยวกับโปรเจค</a></li>
+                <li><a href="poster.html" class="nav-link active">โปสเตอร์</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>โปสเตอร์โปรเจค</h1>
+        <p class="subtitle">📄 เอกสารนำเสนอ A1</p>
+    </header>
+    
+    <div class="poster-container">
+        <div class="poster-wrapper">
+            <!-- EASY EDIT: Replace this placeholder with your actual poster -->
+            <!-- Method 1: Use an image file -->
+            <!-- <img src="images/poster-a1.jpg" alt="Project Poster" class="poster-image"> -->
+            
+            <!-- Method 2: Use PDF (will need iframe) -->
+            <!-- <iframe src="images/poster.pdf" width="100%" height="1200px" style="border: 1px solid var(--accent-color);"></iframe> -->
+            
+            <!-- Placeholder - Remove this when you add your actual content -->
+            <div class="poster-placeholder">
+                <div class="upload-icon">📄</div>
+                <h2>วางโปสเตอร์ A1 ของคุณที่นี่</h2>
+                <p>
+                    <strong>วิธีที่ 1: ใช้ไฟล์รูปภาพ</strong><br>
+                    1. บันทึกโปสเตอร์เป็น JPG หรือ PNG<br>
+                    2. ใส่ไฟล์ในโฟลเดอร์ images/ และตั้งชื่อว่า poster-a1.jpg<br>
+                    3. แก้ไขโค้ดบรรทัดที่ 105-106 (ลบ comment)
+                </p>
+                <p>
+                    <strong>วิธีที่ 2: ใช้ไฟล์ PDF</strong><br>
+                    1. บันทึกโปสเตอร์เป็น PDF<br>
+                    2. ใส่ไฟล์ในโฟลเดอร์ images/ และตั้งชื่อว่า poster.pdf<br>
+                    3. แก้ไขโค้ดบรรทัดที่ 108-109 (ลบ comment)
+                </p>
+                <p>
+                    <strong>วิธีที่ 3: ใช้ลิงก์ Google Drive</strong><br>
+                    1. อัปโหลดโปสเตอร์ขึ้น Google Drive<br>
+                    2. เปิดการแชร์เป็นสาธารณะ<br>
+                    3. ใช้ iframe โดยใส่ลิงก์แชร์
+                </p>
+                
+                <div class="poster-actions">
+                    <a href="#" class="action-btn">📥 ดาวน์โหลดตัวอย่าง</a>
+                    <a href="#" class="action-btn">📖 คู่มือการใช้งาน</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fullscreen toggle button -->
+    <button class="fullscreen-toggle" onclick="toggleFullscreen()" title="เต็มจอ">⛶</button>
+    
+    <footer>
+        <p>© 2025 Physical Competing - คณะไอท มจธ.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        // Fullscreen functionality
+        function toggleFullscreen() {
+            const poster = document.querySelector('.poster-wrapper');
+            
+            if (!document.fullscreenElement) {
+                if (poster.requestFullscreen) {
+                    poster.requestFullscreen();
+                } else if (poster.webkitRequestFullscreen) {
+                    poster.webkitRequestFullscreen();
+                } else if (poster.msRequestFullscreen) {
+                    poster.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+        
+        // Keyboard shortcut for fullscreen (F key)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
