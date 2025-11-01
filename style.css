@@ -1,5 +1,5 @@
 /* Brief KARATE FOOLISH - Stylesheet */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700;900&family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700;900&family=Montserrat:wght@400;500;600;700;900&display=swap');
 
 /* ========== EASY EDIT COLORS ========== */
 :root {
@@ -23,7 +23,7 @@
 
 body {
     background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 100%);
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Montserrat', 'Kanit', sans-serif;
     color: var(--text-light);
     overflow-x: hidden;
     line-height: 1.6;
@@ -101,7 +101,7 @@ header {
 }
 
 h1 {
-    font-family: 'Bangers', cursive;
+    font-family: 'Montserrat', 'Kanit', sans-serif;
     font-size: 5rem;
     color: var(--primary-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -169,7 +169,7 @@ h1 {
 
 /* ========== VS TEXT ========== */
 .vs-text {
-    font-family: 'Bangers', cursive;
+    font-family: 'Montserrat', 'Kanit', sans-serif;
     font-size: 4rem;
     color: var(--primary-color);
     text-align: center;
@@ -232,7 +232,7 @@ h1 {
     color: #000;
     border: 1px solid var(--accent-color);
     padding: 15px 30px;
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Montserrat', 'Kanit', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -260,7 +260,7 @@ h1 {
 
 .start-btn {
     padding: 20px 50px;
-    font-family: 'Bangers', cursive;
+    font-family: 'Montserrat', 'Kanit', sans-serif;
     font-size: 2rem;
 }
 
@@ -531,6 +531,18 @@ h1 {
 .character-image {
     position: relative;
     height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.character-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .character-info {
@@ -780,54 +792,129 @@ h1 {
 }
 
 .team-member {
-    background: var(--dark-bg);
-    border: 1px solid var(--accent-color);
-    border-radius: 10px;
-    padding: 20px;
+    position: relative;
+    background: linear-gradient(145deg, rgba(255, 87, 136, 0.25), rgba(87, 197, 255, 0.18));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    padding: 24px 20px 26px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(255, 248, 163, 0.35), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
 }
 
 .team-member:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.team-member:hover::before {
+    opacity: 1;
+}
+
+.team-member::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background: conic-gradient(from 120deg, rgba(255, 87, 136, 0.4), rgba(87, 197, 255, 0.35), rgba(255, 199, 110, 0.4), rgba(255, 87, 136, 0.4));
+    opacity: 0.4;
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.team-member * {
+    position: relative;
+    z-index: 1;
 }
 
 .member-photo {
     position: relative;
-    height: 200px;
-    margin-bottom: 15px;
+    height: 220px;
+    width: 100%;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(12, 14, 32, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.12);
+}
+
+.member-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+    mix-blend-mode: screen;
+}
+
+.member-photo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .team-member h3 {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+    color: #fffdcf;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
     font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
 .member-id,
 .member-role,
 .member-desc {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
 }
 
 .member-id {
-    color: var(--secondary-color);
+    color: rgba(255, 255, 255, 0.75);
     font-weight: 500;
 }
 
 .member-role {
-    color: var(--text-light);
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 215, 105, 0.2);
+    color: #ffe08a;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.member-role::before {
+    content: '★';
+    font-size: 0.85rem;
 }
 
 .member-desc {
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
     font-weight: 400;
+}
+
+.member-desc strong {
+    color: #87f3ff;
 }
 
 /* ========== DOWNLOAD BUTTONS ========== */
