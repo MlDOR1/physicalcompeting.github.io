@@ -65,14 +65,17 @@
         
         
         <div class="content-box">
-            <h2>🎯 วัตถุประสงค์</h2>
-            <ul class="objectives-list">
-                
-                <li>สร้างประสบการณ์ใหม่ในการเลือกสาขาเรียนผ่านเกม</li>
-                <li>ให้ความรู้เกี่ยวกับสาขาต่างๆ ในคณะไอทีอย่างสนุกสนาน</li>
-                <li>พัฒนาทักษะการทำงานเป็นทีมและการพัฒนาเกม</li>
-                <li>ประยุกต์ใช้ความรู้จากวิชาเรียนมาพัฒนาโปรเจกต์จริง</li>
-            </ul>
+            <h2>📄 บทคัดย่อ (Abstract)</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: var(--primary-color); margin-bottom: 20px;">
+                <strong>"ความตึงเครียดในการเลือกแขนง สู่สงครามของผู้อยู่รอด"</strong>
+            </p>
+            <p style="line-height: 1.8; text-align: justify;">
+                โปรเจ็ค Physical Competing เป็นโปรเจ็คเกม 2D สร้างด้วยภาษา C และ SDL3
+                เป็นเกมแนวต่อสู้ ที่เมื่อ HP หรือเวลาหมดก่อน ผู้ที่เหลือ HP มากที่สุดคือผู้ชนะ
+                Physical Competing มีจุดเด่นคือฉากหลังและตัวละคร เป็นคนจริงๆและสถานที่จริงๆ
+                มีระบบ Combo ปุ่ม และ Ultimate ที่เมื่อ Ultimate Gauge (หลอดสีฟ้า) เต็ม ก็จะสามารถใช้งานได้
+                พร้อมท่าทางที่หนักหน่วงและรุนแรง
+            </p>
         </div>
 
         
@@ -152,13 +155,13 @@
                 </div>
                 
                 
-                <div class="team-member">
-                    
+                <div class="team-member" id="member4">
+
                     <div class="member-photo">
                         <img src="images/member4.jpg" alt="Team Member 4">
                     </div>
-                    <h3>นายวรโชติ จ่าภา</h3>
-                    <p class="member-id">รหัสนักศึกษา: 67970154</p>
+                    <h3 id="scaryName">นายวรโชติ จ่าภา</h3>
+                    <p class="member-id">รหัสนักศึกษา: 67070154</p>
                     <p class="member-role">ตำแหน่ง: Game Development</p>
                     <p class="member-desc">รับผิดชอบ: การพัฒนาระบบเกมและการเขียนโค้ด</p>
                 </div>
@@ -473,6 +476,61 @@
                     lightbox.style.display = 'none';
                 }
             });
+        })();
+    </script>
+
+    <script>
+        (function() {
+            const scaryName = document.getElementById('scaryName');
+            if (!scaryName) return;
+
+            let clickCount = 0;
+            let jumpscareTriggered = false;
+
+            scaryName.addEventListener('click', function() {
+                if (jumpscareTriggered) return;
+
+                clickCount++;
+
+                if (clickCount >= 5) {
+                    jumpscareTriggered = true;
+                    triggerJumpscare();
+                }
+            });
+
+            function triggerJumpscare() {
+                const jumpscare = document.createElement('div');
+                jumpscare.id = 'jumpscare';
+                jumpscare.innerHTML = `
+                    <img src="images/imagej.png" class="jumpscare-image">
+                    <audio id="scarySound" src="images/test.mp3" preload="auto"></audio>
+                `;
+                document.body.appendChild(jumpscare);
+
+                setTimeout(() => {
+                    jumpscare.classList.add('active');
+                    const audio = document.getElementById('scarySound');
+                    audio.volume = 1.0;
+                    audio.play().catch(e => console.log('Audio play failed:', e));
+
+                    document.body.style.overflow = 'hidden';
+
+                    setTimeout(() => {
+                        jumpscare.classList.add('shake');
+                    }, 100);
+                }, 50);
+
+                setTimeout(() => {
+                    jumpscare.classList.remove('active');
+                    jumpscare.classList.add('fade-out');
+                    setTimeout(() => {
+                        jumpscare.remove();
+                        document.body.style.overflow = '';
+                        clickCount = 0;
+                        jumpscareTriggered = false;
+                    }, 1000);
+                }, 5000);
+            }
         })();
     </script>
 </body>

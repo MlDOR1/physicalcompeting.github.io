@@ -1594,3 +1594,111 @@ footer p {
         right: 15px;
     }
 }
+
+/* ========== JUMPSCARE EASTER EGG ========== */
+#jumpscare {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background: #000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#jumpscare.active {
+    display: flex;
+    animation: bloodFlash 0.2s infinite alternate, glitchEffect 0.1s infinite;
+}
+
+#jumpscare img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1.2) contrast(1.5) saturate(1.8);
+    animation: scaryZoom 5s ease-out;
+}
+
+#jumpscare.shake img {
+    animation: violentShake 0.15s infinite, scaryZoom 5s ease-out, rotateGlitch 0.3s infinite;
+}
+
+#jumpscare.fadeOut {
+    animation: scaryFadeOut 0.8s ease-out forwards;
+}
+
+/* Violent shaking effect */
+@keyframes violentShake {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1.15); }
+    10% { transform: translate(-15px, -10px) rotate(-3deg) scale(1.18); }
+    20% { transform: translate(15px, 10px) rotate(3deg) scale(1.12); }
+    30% { transform: translate(-12px, 8px) rotate(-2deg) scale(1.2); }
+    40% { transform: translate(12px, -12px) rotate(2deg) scale(1.16); }
+    50% { transform: translate(-18px, 15px) rotate(-4deg) scale(1.19); }
+    60% { transform: translate(18px, -8px) rotate(4deg) scale(1.13); }
+    70% { transform: translate(-10px, -15px) rotate(-3deg) scale(1.21); }
+    80% { transform: translate(10px, 12px) rotate(3deg) scale(1.17); }
+    90% { transform: translate(-20px, -5px) rotate(-5deg) scale(1.14); }
+    100% { transform: translate(20px, 5px) rotate(5deg) scale(1.22); }
+}
+
+/* Blood red flashing effect */
+@keyframes bloodFlash {
+    0% { background-color: #000; }
+    50% { background-color: #1a0000; }
+    100% { background-color: #330000; }
+}
+
+/* Glitch effect for extra terror */
+@keyframes glitchEffect {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    25% { filter: hue-rotate(90deg) brightness(1.3); }
+    50% { filter: hue-rotate(180deg) brightness(0.8); }
+    75% { filter: hue-rotate(270deg) brightness(1.2); }
+    100% { filter: hue-rotate(360deg) brightness(1); }
+}
+
+/* Scary zoom-in effect */
+@keyframes scaryZoom {
+    0% {
+        transform: scale(0.5) rotate(-5deg);
+        opacity: 0;
+    }
+    10% {
+        transform: scale(1.3) rotate(2deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Rotation glitch */
+@keyframes rotateGlitch {
+    0% { filter: brightness(1.2) contrast(1.5) saturate(1.8) hue-rotate(0deg); }
+    33% { filter: brightness(1.5) contrast(2) saturate(2.5) hue-rotate(20deg); }
+    66% { filter: brightness(0.8) contrast(1.8) saturate(1.5) hue-rotate(-20deg); }
+    100% { filter: brightness(1.2) contrast(1.5) saturate(1.8) hue-rotate(0deg); }
+}
+
+/* Scary fade out */
+@keyframes scaryFadeOut {
+    0% {
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+    50% {
+        opacity: 0.8;
+        filter: brightness(0.3);
+    }
+    100% {
+        opacity: 0;
+        filter: brightness(0);
+        display: none;
+    }
+}
