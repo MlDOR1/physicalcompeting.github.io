@@ -119,8 +119,8 @@
             <h2>👥 ทีมผู้พัฒนา</h2>
             <div class="team-grid">
                 
-                <div class="team-member">
-                    
+                <div class="team-member" id="member1" data-member="1">
+
                     <div class="member-photo">
                         <img src="images/member1.jpg" alt="Team Member 1">
                     </div>
@@ -129,10 +129,10 @@
                     <p class="member-role">ตำแหน่ง: Project Leader</p>
                     <p class="member-desc">รับผิดชอบ: การพัฒนาระบบเกมและการเขียนโค้ด</p>
                 </div>
-                
-                
-                <div class="team-member">
-                    
+
+
+                <div class="team-member" id="member2" data-member="2">
+
                     <div class="member-photo">
                         <img src="images/member2.jpg" alt="Team Member 2">
                     </div>
@@ -141,10 +141,10 @@
                     <p class="member-role">ตำแหน่ง: Web Designer</p>
                     <p class="member-desc">รับผิดชอบ: การออกแบบตัวละครและ Webpage</p>
                 </div>
-                
-                
-                <div class="team-member">
-                    
+
+
+                <div class="team-member" id="member3" data-member="3">
+
                     <div class="member-photo">
                         <img src="images/member3.png" alt="Team Member 3">
                     </div>
@@ -155,7 +155,7 @@
                 </div>
                 
                 
-                <div class="team-member" id="member4">
+                <div class="team-member" id="member4" data-member="4">
 
                     <div class="member-photo">
                         <img src="images/member4.jpg" alt="Team Member 4">
@@ -169,20 +169,17 @@
                 
             </div>
         </div>
-        
-        
-        
+
+
+
         <div class="content-box">
             <h2>🔗 ดาวน์โหลดและลิงก์</h2>
             <div class="download-buttons">
-                
+
                 <a href="https://github.com/Rawitath/Physical-Competing" class="download-btn">
                     <span>📥 ดาวน์โหลดเกม</span>
                 </a>
-                <a href="#" class="download-btn">
-                    <span>📄 เอกสารโปรเจค</span>
-                </a>
-                <a href="#" class="download-btn">
+                <a href="https://www.youtube.com/embed/N2M51F8l5Kg" class="download-btn">
                     <span>🎬 วิดีโอนำเสนอ</span>
                 </a>
                 <a href="https://github.com/Rawitath/Physical-Competing" class="download-btn">
@@ -190,11 +187,11 @@
                 </a>
             </div>
         </div>
-        
-        
+
+
         <div class="content-box">
             <h2>📧 ติดต่อเรา</h2>
-            
+
             <p style="text-align: center; font-size: 0.9rem;">
                 หากมีคำถามหรือข้อเสนอแนะเกี่ยวกับโปรเจค<br>
                 สามารถติดต่อได้ที่: <a href="mailto:physicalcompeting@gmail.com" style="color: #f9d423;">physicalcompeting@gmail.com</a>
@@ -530,6 +527,131 @@
                         jumpscareTriggered = false;
                     }, 1000);
                 }, 5000);
+            }
+        })();
+    </script>
+
+    <script>
+        (function() {
+            const members = [
+                document.getElementById('member1'),
+                document.getElementById('member2'),
+                document.getElementById('member3'),
+                document.getElementById('member4')
+            ];
+
+            let clickSequence = [];
+            let sequenceTriggered = false;
+            let resetTimer = null;
+
+            members.forEach((member, index) => {
+                if (!member) return;
+
+                member.addEventListener('click', function() {
+                    if (sequenceTriggered) return;
+
+                    const memberNum = parseInt(this.getAttribute('data-member'));
+                    clickSequence.push(memberNum);
+
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+
+                    // Reset timer - if no click in 3 seconds, reset sequence
+                    clearTimeout(resetTimer);
+                    resetTimer = setTimeout(() => {
+                        clickSequence = [];
+                    }, 3000);
+
+                    // Check if sequence is correct so far
+                    const expectedSequence = [1, 2, 3, 4];
+                    const isCorrect = clickSequence.every((num, idx) => num === expectedSequence[idx]);
+
+                    if (!isCorrect) {
+                        clickSequence = [];
+                        return;
+                    }
+
+                    // Check if complete sequence
+                    if (clickSequence.length === 4) {
+                        sequenceTriggered = true;
+                        clearTimeout(resetTimer);
+                        triggerTeamVideo();
+                    }
+                });
+            });
+
+            function triggerTeamVideo() {
+                const videoPopup = document.createElement('div');
+                videoPopup.id = 'teamVideoPopup';
+                videoPopup.innerHTML = `
+                    <div class="video-popup-content">
+                        <span class="video-popup-close">&times;</span>
+                        <h2 class="popup-title">🎉 Team Secret Unlocked! 🎉</h2>
+                        <p class="popup-subtitle">You found the team sequence!</p>
+                        <div class="video-wrapper">
+                            <video id="teamVideo" autoplay loop muted>
+                                <source src="images/test.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="confetti-container"></div>
+                    </div>
+                `;
+                document.body.appendChild(videoPopup);
+
+                // Add confetti effect
+                createConfetti(videoPopup.querySelector('.confetti-container'));
+
+                // Show with animation
+                setTimeout(() => {
+                    videoPopup.classList.add('visible');
+                    const video = document.getElementById('teamVideo');
+                    video.muted = false;
+                    video.volume = 0.7;
+                }, 10);
+
+                // Add shake animation to content
+                const content = videoPopup.querySelector('.video-popup-content');
+                content.classList.add('shake-animation');
+
+                // Close handlers
+                const closeBtn = videoPopup.querySelector('.video-popup-close');
+                const closePopup = () => {
+                    videoPopup.classList.remove('visible');
+                    setTimeout(() => {
+                        videoPopup.remove();
+                        clickSequence = [];
+                        sequenceTriggered = false;
+                    }, 300);
+                };
+
+                closeBtn.addEventListener('click', closePopup);
+                videoPopup.addEventListener('click', (e) => {
+                    if (e.target === videoPopup) closePopup();
+                });
+
+                document.addEventListener('keydown', function handleEscape(e) {
+                    if (e.key === 'Escape') {
+                        closePopup();
+                        document.removeEventListener('keydown', handleEscape);
+                    }
+                });
+            }
+
+            function createConfetti(container) {
+                const colors = ['#f9d423', '#ff4e50', '#fc913a', '#f9b934', '#ff6b9d'];
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    container.appendChild(confetti);
+                }
             }
         })();
     </script>
