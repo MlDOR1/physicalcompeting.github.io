@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="sunburst"></div>
-    
-    <!-- Navigation Menu -->
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo"> PHYSICAL COMPETING</a>
@@ -30,27 +29,22 @@
     </header>
     
     <div class="container">
-        <!-- EASY EDIT SECTION: Main Introduction -->
         <div class="intro-section">
             <h2>🥋 ตำนานเริ่มต้นที่นี่ 🥋</h2>
             <p>
-                <!-- EDIT HERE: Main concept description -->
                 ลืม GPA ไปได้เลย! ที่คณะไอที Kmitl. มีเพียงนักรบที่แข็งแกร่งที่สุดเท่านั้นที่จะได้เลือกสาขา!
             </p>
             <p>
-                <!-- EDIT HERE: Story hook -->
                 สามสาขาตำนานรออยู่ สามเส้นทางสู่ความรุ่งโรจน์ แต่มีเพียงวิธีเดียวที่จะเลือก...
             </p>
             <p style="color: #ff4e50; font-size: 1rem;">
                 ⚡ สู้เพื่อมัน! ⚡
             </p>
         </div>
-        
-        <!-- Game Preview Image Section -->
+
         <div class="game-preview">
             <h2>📸 ภาพจากเกม</h2>
             <div class="preview-grid">
-                <!-- EASY EDIT: Replace placeholder images with actual screenshots -->
                 <div class="preview-item">
                     <img src="images/image.png" alt="Game Screenshot 1" class="preview-img">
                     <p>หน้าจอเกม</p>
@@ -65,12 +59,10 @@
                 </div>
             </div>
         </div>
-        
-        <!-- EASY EDIT SECTION: Game Rules -->
+
         <div class="game-rules">
             <h2>🎯 กฎการแข่งขัน 🎯</h2>
             <ul>
-                <!-- EDIT HERE: Add or remove rules as needed -->
                 <li>นักศึกษาแต่ละคนเข้าสู่สนามในฐานะนักสู้</li>
                 <li>ต่อสู้กับนักศึกษาคนอื่นๆ เพื่อพิสูจน์คุณค่าของตัวเอง</li>
                 <li>ชนะการแข่งขันเพื่อรับคะแนนและชื่อเสียง</li>
@@ -79,8 +71,7 @@
                 <li>จำไว้: ในโดโจนี้ คีย์บอร์ดของคุณคืออาวุธ!</li>
             </ul>
         </div>
-        
-        <!-- Call to Action -->
+
         <div class="cta-section">
             <h2>พร้อมที่จะสู้แล้วหรือยัง?</h2>
             <button class="start-btn" onclick="location.href='gameplay.html'">เริ่มการเดินทาง!</button>
@@ -88,16 +79,14 @@
     </div>
     
     <footer>
-        <p>© 2025 PHYSICAL COMPETING By IT KMITL</p>
+        <p>© 2025 PHYSICAL COMPETING By We Will Cook</p>
         <p style="margin-top: 10px;">🥋 ขอให้โค้ดเดอร์ที่แข็งแกร่งที่สุดชนะ! 🥋</p>
     </footer>
     
     <script src="script.js"></script>
 
-    <!-- Image Lightbox Script -->
     <script>
         (function() {
-            // Create lightbox overlay
             const lightbox = document.createElement('div');
             lightbox.id = 'imageLightbox';
             lightbox.innerHTML = `
@@ -107,7 +96,6 @@
             `;
             document.body.appendChild(lightbox);
 
-            // Add click handlers to all gallery images
             const galleryItems = document.querySelectorAll('.gallery-item img, .preview-item img');
             galleryItems.forEach(img => {
                 img.style.cursor = 'pointer';
@@ -121,14 +109,12 @@
                 });
             });
 
-            // Close lightbox on click
             lightbox.addEventListener('click', function(e) {
                 if (e.target === lightbox || e.target.className === 'lightbox-close') {
                     lightbox.style.display = 'none';
                 }
             });
 
-            // Close on Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && lightbox.style.display === 'flex') {
                     lightbox.style.display = 'none';
