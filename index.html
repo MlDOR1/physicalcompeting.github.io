@@ -17,7 +17,6 @@
                 <li><a href="index.html" class="nav-link active">หน้าแรก</a></li>
                 <li><a href="gameplay.html" class="nav-link">วิธีการเล่น</a></li>
                 <li><a href="characters.html" class="nav-link">ตัวละคร</a></li>
-                <li><a href="branches.html" class="nav-link">สาขา</a></li>
                 <li><a href="about.html" class="nav-link">เกี่ยวกับโปรเจค</a></li>
                 <li><a href="poster.html" class="nav-link">โปสเตอร์</a></li>
             </ul>
@@ -53,58 +52,17 @@
             <div class="preview-grid">
                 <!-- EASY EDIT: Replace placeholder images with actual screenshots -->
                 <div class="preview-item">
-                    <img src="images/screenshot1.jpg" alt="Game Screenshot 1" class="preview-img">
+                    <img src="images/image.png" alt="Game Screenshot 1" class="preview-img">
                     <p>หน้าจอเกม</p>
                 </div>
                 <div class="preview-item">
-                    <img src="images/screenshot2.jpg" alt="Game Screenshot 2" class="preview-img">
+                    <img src="images/image2.png" alt="Game Screenshot 2" class="preview-img">
                     <p>การต่อสู้</p>
                 </div>
                 <div class="preview-item">
-                    <img src="images/screenshot3.jpg" alt="Game Screenshot 3" class="preview-img">
+                    <img src="images/image3.png" alt="Game Screenshot 3" class="preview-img">
                     <p>การเลือกสาขา</p>
                 </div>
-            </div>
-        </div>
-        
-        <div class="vs-text">เลือกชะตากรรมของคุณ!</div>
-        
-        <!-- EASY EDIT SECTION: Three Branches -->
-        <div class="branches-container">
-            <!-- Branch 1: Software Engineering -->
-            <div class="branch-card">
-                <div class="branch-icon">💻</div>
-                <h3>วิศวกรรมซอฟต์แวร์</h3>
-                <!-- EDIT HERE: Branch description -->
-                <p>
-                    เรียนรู้ศิลปะการเขียนโค้ด! สร้างอาณาจักรด้วยอัลกอริทึมและเฟรมเวิร์ก
-                    กำจัดบั๊กด้วยทักษะการดีบั๊กอันทรงพลัง!
-                </p>
-                <button class="fight-btn" onclick="location.href='branches.html#software'">ดูรายละเอียด</button>
-            </div>
-            
-            <!-- Branch 2: Network Engineering -->
-            <div class="branch-card">
-                <div class="branch-icon">🌐</div>
-                <h3>วิศวกรรมเครือข่าย</h3>
-                <!-- EDIT HERE: Branch description -->
-                <p>
-                    ควบคุมโลกดิจิทัล! บังคับการไหลของข้อมูลผ่านเครือข่ายอันกว้างใหญ่
-                    กังฟูของคุณถูกส่งด้วยความเร็วแสง!
-                </p>
-                <button class="fight-btn" onclick="location.href='branches.html#network'">ดูรายละเอียด</button>
-            </div>
-            
-            <!-- Branch 3: Digital Media -->
-            <div class="branch-card">
-                <div class="branch-icon">🎮</div>
-                <h3>ดิจิทัลมีเดีย</h3>
-                <!-- EDIT HERE: Branch description -->
-                <p>
-                    ควบคุมพลังแห่งความคิดสร้างสรรค์! ผสมผสานศิลปะกับเทคโนโลยี
-                    จินตนาการของคุณคืออาวุธที่ทรงพลังที่สุด!
-                </p>
-                <button class="fight-btn" onclick="location.href='branches.html#digital'">ดูรายละเอียด</button>
             </div>
         </div>
         
@@ -135,5 +93,48 @@
     </footer>
     
     <script src="script.js"></script>
+
+    <!-- Image Lightbox Script -->
+    <script>
+        (function() {
+            // Create lightbox overlay
+            const lightbox = document.createElement('div');
+            lightbox.id = 'imageLightbox';
+            lightbox.innerHTML = `
+                <span class="lightbox-close">&times;</span>
+                <img class="lightbox-content" id="lightboxImg">
+                <div class="lightbox-caption"></div>
+            `;
+            document.body.appendChild(lightbox);
+
+            // Add click handlers to all gallery images
+            const galleryItems = document.querySelectorAll('.gallery-item img, .preview-item img');
+            galleryItems.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    lightbox.style.display = 'flex';
+                    document.getElementById('lightboxImg').src = this.src;
+                    const caption = this.closest('.gallery-item, .preview-item').querySelector('p, .gallery-caption');
+                    if (caption) {
+                        document.querySelector('.lightbox-caption').textContent = caption.textContent;
+                    }
+                });
+            });
+
+            // Close lightbox on click
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target.className === 'lightbox-close') {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

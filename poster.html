@@ -149,7 +149,6 @@
                 <li><a href="index.html" class="nav-link">หน้าแรก</a></li>
                 <li><a href="gameplay.html" class="nav-link">วิธีการเล่น</a></li>
                 <li><a href="characters.html" class="nav-link">ตัวละคร</a></li>
-                <li><a href="branches.html" class="nav-link">สาขา</a></li>
                 <li><a href="about.html" class="nav-link">เกี่ยวกับโปรเจค</a></li>
                 <li><a href="poster.html" class="nav-link active">โปสเตอร์</a></li>
             </ul>
@@ -165,39 +164,10 @@
         <div class="poster-wrapper">
             <!-- EASY EDIT: Replace this placeholder with your actual poster -->
             <!-- Method 1: Use an image file -->
-            <!-- <img src="images/poster-a1.jpg" alt="Project Poster" class="poster-image"> -->
-            
+            <img src="images/Physical Competing (594 x 840 มม.).png" alt="Project Poster" class="poster-image" id="posterImage">
+
             <!-- Method 2: Use PDF (will need iframe) -->
             <!-- <iframe src="images/poster.pdf" width="100%" height="1200px" style="border: 1px solid var(--accent-color);"></iframe> -->
-            
-            <!-- Placeholder - Remove this when you add your actual content -->
-            <div class="poster-placeholder">
-                <div class="upload-icon">📄</div>
-                <h2>วางโปสเตอร์ A1 ของคุณที่นี่</h2>
-                <p>
-                    <strong>วิธีที่ 1: ใช้ไฟล์รูปภาพ</strong><br>
-                    1. บันทึกโปสเตอร์เป็น JPG หรือ PNG<br>
-                    2. ใส่ไฟล์ในโฟลเดอร์ images/ และตั้งชื่อว่า poster-a1.jpg<br>
-                    3. แก้ไขโค้ดบรรทัดที่ 105-106 (ลบ comment)
-                </p>
-                <p>
-                    <strong>วิธีที่ 2: ใช้ไฟล์ PDF</strong><br>
-                    1. บันทึกโปสเตอร์เป็น PDF<br>
-                    2. ใส่ไฟล์ในโฟลเดอร์ images/ และตั้งชื่อว่า poster.pdf<br>
-                    3. แก้ไขโค้ดบรรทัดที่ 108-109 (ลบ comment)
-                </p>
-                <p>
-                    <strong>วิธีที่ 3: ใช้ลิงก์ Google Drive</strong><br>
-                    1. อัปโหลดโปสเตอร์ขึ้น Google Drive<br>
-                    2. เปิดการแชร์เป็นสาธารณะ<br>
-                    3. ใช้ iframe โดยใส่ลิงก์แชร์
-                </p>
-                
-                <div class="poster-actions">
-                    <a href="#" class="action-btn">📥 ดาวน์โหลดตัวอย่าง</a>
-                    <a href="#" class="action-btn">📖 คู่มือการใช้งาน</a>
-                </div>
-            </div>
         </div>
     </div>
     
@@ -213,7 +183,7 @@
         // Fullscreen functionality
         function toggleFullscreen() {
             const poster = document.querySelector('.poster-wrapper');
-            
+
             if (!document.fullscreenElement) {
                 if (poster.requestFullscreen) {
                     poster.requestFullscreen();
@@ -228,13 +198,53 @@
                 }
             }
         }
-        
+
         // Keyboard shortcut for fullscreen (F key)
         document.addEventListener('keydown', function(e) {
             if (e.key === 'f' || e.key === 'F') {
                 toggleFullscreen();
             }
         });
+    </script>
+
+    <!-- Image Lightbox Script -->
+    <script>
+        (function() {
+            // Create lightbox overlay
+            const lightbox = document.createElement('div');
+            lightbox.id = 'imageLightbox';
+            lightbox.innerHTML = `
+                <span class="lightbox-close">&times;</span>
+                <img class="lightbox-content" id="lightboxImg">
+                <div class="lightbox-caption"></div>
+            `;
+            document.body.appendChild(lightbox);
+
+            // Add click handler to poster image
+            const posterImg = document.getElementById('posterImage');
+            if (posterImg) {
+                posterImg.style.cursor = 'pointer';
+                posterImg.addEventListener('click', function() {
+                    lightbox.style.display = 'flex';
+                    document.getElementById('lightboxImg').src = this.src;
+                    document.querySelector('.lightbox-caption').textContent = 'Physical Competing - โปสเตอร์โปรเจค A1';
+                });
+            }
+
+            // Close lightbox on click
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target.className === 'lightbox-close') {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                }
+            });
+        })();
     </script>
 </body>
 </html>
